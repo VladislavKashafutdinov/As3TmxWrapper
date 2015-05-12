@@ -7,13 +7,14 @@ package com.vladkashaf.tmx
 	public class Layer 
 	{
 		
-		private var _xml:XMLList;
+		private var _xml:XML;
 		private var _tiles:Array;
 		
-		public function Layer(xml:XMLList)
+		public function Layer(xml:XML)
 		{
 			_xml = xml;
 			_tiles = [];
+			var tileXmlList:XMLList = _xml.data.tile;
 			for (var i:int = 0; i < tileXmlList.length(); i++)
 			{
 				_tiles.push(new Tile(tileXmlList[i]));
@@ -33,11 +34,6 @@ package com.vladkashaf.tmx
 		public function get tiles():Array
 		{
 			return _tiles;
-		}
-		
-		private function get tileXmlList():XMLList
-		{
-			return _xml.data.tile;
 		}
 		
 	}
