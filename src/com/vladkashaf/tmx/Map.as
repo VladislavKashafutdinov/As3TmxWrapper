@@ -10,12 +10,14 @@ package com.vladkashaf.tmx
 		private var _xml:XML;
 		private var _layers:Array;
 		private var _tilesets:Array;
+		private var _objectGroups:Array;
 		
 		public function Map(xml:XML )
 		{
 			_xml = xml;
 			_layers = [];
 			_tilesets = [];
+			_objectGroups = [];
 			var layersXmlList:XMLList = _xml.layer;
 			for (var i:int = 0; i < layersXmlList.length(); i++) 
 			{
@@ -26,6 +28,20 @@ package com.vladkashaf.tmx
 			{
 				_tilesets.push(new Tileset(tilesetXmlList[i]))
 			}
+			var objectGrupXmlList:XMLList = _xml.objectgroup;
+			for (i = 0; i < objectGrupXmlList.length(); i++) 
+			{
+				_objectGroups.push(new ObjectGroup(objectGrupXmlList[i]))
+			}
+		}
+		
+		public function findObjectGroup(name:String):ObjectGroup
+		{
+			var filtered:Array = _objectGroups.filter(function(og:ObjectGroup, i:int, arr:Array):Boolean
+			{ 
+				return og.name == name; 
+			});
+			return filtered.length == 0 ? null : filtered[0];
 		}
 		
 		public function findLayer(name:String):Layer

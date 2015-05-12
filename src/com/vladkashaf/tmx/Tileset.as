@@ -43,15 +43,6 @@ package com.vladkashaf.tmx
 		{
 			return tileGid - firstGid;
 		}
-		/**
-		 * Generates texture for a tile, specified by its number within tileset
-		 * @param	tileNumber is a number of tile inside of current tileset. Don't confuse with tile gid. Tile number can be calculated by this way: tileNumber == (tileGid - tilesetFirstGid)
-		 * @return just created texture of tile
-		 */
-		public function getTileTexture(tileNumber:int, tilesetTexture:Texture):Texture
-		{
-			return Texture.fromTexture(tilesetTexture, getTileRegion(tileNumber));
-		}
 		
 		/**
 		 * Generates rectangle for a tile, specified by its number within tileset

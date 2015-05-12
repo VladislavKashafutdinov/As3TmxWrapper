@@ -1,5 +1,6 @@
 package com.vladkashaf.tmx 
 {
+	import starling.textures.Texture;
 	/**
 	 * ...
 	 * @author Kashafuutdinov Vladislav
